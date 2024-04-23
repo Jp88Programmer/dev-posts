@@ -2,45 +2,40 @@
 import React from "react";
 import DevPost from "./DevPost";
 import Img from "../../public/next.svg";
-const devpost = [
-  {
-    img: Img,
-    title: "Top 3 JavaScript Frameworks",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, impedit laborum in voluptatibus ad quod natus illo sapiente reprehenderit asperiores possimus. Vitae ipsam praesentium nisi quis magnam accusantium repellat reprehenderit.",
-  },
-  {
-    img: Img,
-    title: "Top 3 JavaScript Frameworks",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, impedit laborum in voluptatibus ad quod natus illo sapiente reprehenderit asperiores possimus. Vitae ipsam praesentium nisi quis magnam accusantium repellat reprehenderit.",
-  },
-  {
-    img: Img,
-    title: "Top 3 JavaScript Frameworks",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, impedit laborum in voluptatibus ad quod natus illo sapiente reprehenderit asperiores possimus. Vitae ipsam praesentium nisi quis magnam accusantium repellat reprehenderit.",
-  },
-  {
-    img: Img,
-    title: "Top 3 JavaScript Frameworks",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, impedit laborum in voluptatibus ad quod natus illo sapiente reprehenderit asperiores possimus. Vitae ipsam praesentium nisi quis magnam accusantium repellat reprehenderit.",
-  },
-];
-const DevPosts = () => {
+import { article } from "@/types/type";
+
+const DevPosts = ({ latestArticles }: any) => {
   return (
     <div className="w-3/5 m-auto flex flex-col gap-8 items-center justify-center">
-      {devpost.map((post, id) => {
-        return (
-          <DevPost
-            key={id}
-            img={post.img}
-            title={post.title}
-            des={post.description}
-          />
-        );
-      })}
+      {latestArticles?.articles?.map(
+        (
+          {
+            source,
+            author,
+            title,
+            description,
+            url,
+            urlToImage,
+            publishedAt,
+            content,
+          }: article,
+          id: number
+        ) => {
+          return (
+            <DevPost
+              key={id}
+              source={source}
+              urlToImage={urlToImage}
+              title={title}
+              description={description}
+              url={url}
+              publishedAt={publishedAt}
+              content={content}
+              author={author}
+            />
+          );
+        }
+      )}
     </div>
   );
 };
