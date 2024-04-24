@@ -20,17 +20,15 @@ function getTimeDifferenceString(dateString: string) {
 }
 
 function calculateReadingTime(content: string) {
-  // Remove HTML tags and trim whitespace
-  const text = content.replace(/<[^>]+>/g, "").trim();
+  const index = content.indexOf("[");
 
-  // Split the text into words
-  const words = text.split(/\s+/);
+  const numberOfChars = content?.substring(index)?.split(" ")[0]?.substring(2);
 
   // Average reading speed in words per minute
   const wordsPerMinute = 200; // Adjust this value as needed
 
   // Calculate the reading time in minutes
-  const readingTimeInMinutes = words.length / wordsPerMinute;
+  const readingTimeInMinutes = parseInt(numberOfChars) / wordsPerMinute;
 
   // Round up to the nearest whole number
   const readingTimeRounded = Math.ceil(readingTimeInMinutes);

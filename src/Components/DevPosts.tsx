@@ -21,19 +21,21 @@ const DevPosts = ({ latestArticles }: any) => {
           }: article,
           id: number
         ) => {
-          return (
-            <DevPost
-              key={id}
-              source={source}
-              urlToImage={urlToImage}
-              title={title}
-              description={description}
-              url={url}
-              publishedAt={publishedAt}
-              content={content}
-              author={author}
-            />
-          );
+          if (urlToImage && title != "[Removed]") {
+            return (
+              <DevPost
+                key={id}
+                source={source}
+                urlToImage={urlToImage}
+                title={title}
+                description={description}
+                url={url}
+                publishedAt={publishedAt}
+                content={content}
+                author={author}
+              />
+            );
+          }
         }
       )}
     </div>
