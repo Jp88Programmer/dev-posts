@@ -17,3 +17,8 @@ export type article = {
   publishedAt: string;
   content: string;
 };
+
+export type queryParams = {
+  first: number;
+  skip: number;
+};
