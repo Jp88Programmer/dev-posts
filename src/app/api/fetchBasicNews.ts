@@ -17,7 +17,6 @@ const getCountriesInfo = async ({ first, skip }: queryParams) => {
       more: response.length > 10,
     };
   } else {
-    console.log("🚀 ~ response:", response);
     return {
       countryInfos: response?.filter(
         (data: any, index: number) => index > skip && index < skip + 10
@@ -27,5 +26,24 @@ const getCountriesInfo = async ({ first, skip }: queryParams) => {
   }
 };
 
+const getLatestArticles = async (skip:any) => {
+  if (skip == 0) {
+    const res = await fetch(BASE_URL);
+    response = await res.json();
+    return {
+      articles: response?.articles?.filter(
+        (data: any, index: number) => index < 25
+      ),
+      more: response?.articles?.length > 25,
+    };
+  } else {
+    return {
+      articles: response?.filter(
+        (data: any, index: number) => index > skip && index < skip + 25
+      ),
+      more: response?.articles?.length > skip + 25,
+    };
+  }
+};
 
-export { getFetchBasicNews, getCountriesInfo };
+export { getFetchBasicNews, getCountriesInfo, getLatestArticles };

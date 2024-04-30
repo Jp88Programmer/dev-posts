@@ -5,7 +5,7 @@ import React from "react";
 const Contact = async () => {
   return (
     <div>
-      <CounteryCards />
+      {/* <CounteryCards /> */}
     </div>
   );
 };
